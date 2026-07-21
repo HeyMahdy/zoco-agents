@@ -1,7 +1,7 @@
 [project]
 name = "zoco-agents"
 version = "0.1.0"
-description = "Add your description here"
+description = "An experimental, open-source foundation for building agentic AI systems in Python."
 readme = "README.md"
 requires-python = ">=3.12.3"
 dependencies = [
