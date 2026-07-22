@@ -1,27 +1,24 @@
-
-from BaseAgent import OpenAiChatCompletionClient,Agent
 import asyncio
-
+from BaseAgent import OpenAiChatCompletionClient, Agent
 
 async def main():
-    # 1. Initialize the client
+    # 1. Initialize the decoupled LLM Client
     client = OpenAiChatCompletionClient(
         model="gpt-4o-mini",
-        api_key="your api key"
+        api_key="your-api-key-here"
     )
-    # 2. Initialize the agent with instructions and the client
+    
+    # 2. Define the Agent and attach the client
     my_agent = Agent(
         name="Assistant",
         instructions="You are a helpful assistant.",
         model_client=client
     )
 
-    # 3. Invoke run_stream (returns an AsyncGenerator)
-    stream = await my_agent.run(task="count from 1 to 20")
-    print(stream)
-
-    # 4. Iterate through the generator to pull the response
+    # 3. Execute the task asynchronously
+    response = await my_agent.run(task="Hello World")
     
+    print(response) # The result! 🚀
 
 if __name__ == "__main__":
     asyncio.run(main())
